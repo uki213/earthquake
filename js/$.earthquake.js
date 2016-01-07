@@ -1,13 +1,13 @@
 /*global jQuery, MutationObserver */
 (function ($) {
     $.fn.earthquake = function (config) {
+        // 変数設定
         var dom = $(this);
         var setting = {
             eventName: 'earthquake'
         };
 
-        earthquake();
-
+        // 関数設定
         function earthquake() {
             if (typeof MutationObserver === 'function') {
                 var mo = new MutationObserver(changeDom);
@@ -28,5 +28,7 @@
             dom.trigger(setting.eventName);
         }
 
+        // 実行
+        earthquake();
     };
 })(jQuery);
