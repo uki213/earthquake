@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>$.earthquake.js</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="js/$.earthquake.js"></script>
+    <style>
+        .block{
+            display: inline-block;
+            border: 1px solid #000;
+            padding: 10px;
+            width: 300px;
+            min-height: 300px;
+            vertical-align: top;
+        }
+
+        .add-dom{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+	<h1>$.earthquake.js</h1>
+
+    <div id="monitoring-dom" class="block">
+        <p>このボックスを監視します</p>
+    </div>
+
+    <div id="no-monitoring-dom" class="block">
+        <p>このボックスは監視しません</p>
+    </div>
+
+    <div class="add-dom">
+        <button data-target="#monitoring-dom">左へDOMを追加</button>
+        <button data-target="#no-monitoring-dom">右へDOMを追加</button>
+    </div>
+
+    <script>
+        $('#monitoring-dom').earthquake();
+
+        $('#monitoring-dom').on('earthquake', function () {
+            alert('earthquake !!!');
+        })
+
+        $('.add-dom button').on('click', function () {
+            var targetDom = $(this).data('target');
+            $(targetDom).append('<p>Add_Dom</p>')
+        })
+    </script>
+</body>
+</html>
+
+
