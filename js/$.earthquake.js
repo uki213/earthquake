@@ -3,9 +3,10 @@
     $.fn.earthquake = function (config) {
         // 変数設定
         var dom = $(this);
-        var setting = {
+        var defaults = {
             eventName: 'earthquake'
         };
+        var options = $.extend(defaults, config);
 
         // 関数設定
         function earthquake() {
@@ -25,7 +26,7 @@
         }
 
         function changeDom () {
-            dom.trigger(setting.eventName);
+            dom.trigger(options.eventName);
         }
 
         // 実行
